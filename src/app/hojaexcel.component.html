@@ -1,0 +1,95 @@
+<p>Subir Archivo excel</p>
+<br />
+
+<input type="file" (change)="onFileChange($event)" multiple="false" />
+
+<br />
+
+<button (click)="pasardata()">
+  Subir a base de datos Firebase
+</button>
+
+<br />
+
+<div class="col">
+  <form (ngSubmit)="look(datos)">
+    <input
+      type="text"
+      placeholder="Buscar"
+      name="codigo"
+      [(ngModel)]="codigo"
+    />
+
+    <button>Enviar</button>
+  </form>
+</div>
+
+<!--- Tabla -->
+
+<mat-form-field>
+  <input
+    class="form-control"
+    name="filterValue"
+    (ngModelChange)="applyFilter($event)"
+    [(ngModel)]="filterValue"
+    matInput
+    matNativeControl
+    placeholder="Filter"
+  />
+</mat-form-field>
+
+<div class="row">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container *ngIf="dataSource.length > 0" matColumnDef="a">
+      <th mat-header-cell *matHeaderCellDef>Columna 1</th>
+      <td mat-cell *matCellDef="let dataobj">{{dataobj.a}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container *ngIf="dataSource.length > 0" matColumnDef="b">
+      <th mat-header-cell *matHeaderCellDef>Columna 2</th>
+      <td mat-cell *matCellDef="let dataobj">{{dataobj.b}}</td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container *ngIf="dataSource.length > 0" matColumnDef="c">
+      <th mat-header-cell *matHeaderCellDef>Columna 3</th>
+      <td mat-cell *matCellDef="let dataobj">{{dataobj.c}}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container *ngIf="dataSource.length > 0" matColumnDef="d">
+      <th mat-header-cell *matHeaderCellDef>Columna 4</th>
+      <td mat-cell *matCellDef="let dataobj">{{dataobj.d}}</td>
+    </ng-container>
+
+    <ng-container *ngIf="dataSource.length > 0" matColumnDef="e">
+      <th mat-header-cell *matHeaderCellDef>Columna 5</th>
+      <td mat-cell *matCellDef="let dataobj">{{dataobj.e}}</td>
+    </ng-container>
+
+    <ng-container *ngIf="dataSource.length > 0" matColumnDef="f">
+      <th mat-header-cell *matHeaderCellDef>Columna 6</th>
+      <td mat-cell *matCellDef="let dataobj">{{dataobj.f}}</td>
+    </ng-container>
+
+    <ng-container *ngIf="dataSource.length > 0" matColumnDef="g">
+      <th mat-header-cell *matHeaderCellDef>Columna 7</th>
+      <td mat-cell *matCellDef="let dataobj">{{dataobj.g}}</td>
+    </ng-container>
+
+    <div *ngIf="dataSource.length > 0">
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </div>
+  </table>
+</div>
+
+<!--<table>
+    <tbody>
+        <tr *ngFor="let row of datos; let i = index">
+            {{i}}  {{found}}
+        </tr>
+    </tbody>
+</table>-->
